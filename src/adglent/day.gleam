@@ -1,13 +1,13 @@
 import adglent
-import gleam/string
 import gleam/result
-import priv/template
-import priv/templates/testfile_gleeunit
-import priv/templates/testfile_showtime
-import priv/templates/solution
-import priv/toml
+import gleam/string
 import priv/aoc_client
 import priv/errors
+import priv/template
+import priv/templates/solution
+import priv/templates/testfile_gleeunit
+import priv/templates/testfile_showtime
+import priv/toml
 import simplifile
 
 pub fn main() {

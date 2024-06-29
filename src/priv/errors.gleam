@@ -1,6 +1,6 @@
+import gleam/io
 import gleam/result
 import gleam/string
-import gleam/io
 
 pub fn map_messages(
   result: Result(a, b),

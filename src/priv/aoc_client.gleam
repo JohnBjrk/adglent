@@ -1,7 +1,7 @@
-import gleam/result.{try}
-import gleam/httpc
 import gleam/http/request
+import gleam/httpc
 import gleam/int
+import gleam/result.{try}
 import gleam/string
 
 pub fn get_input(
@@ -13,9 +13,10 @@ pub fn get_input(
   use request <- try(
     request.to(url)
     |> result.map_error(fn(error) {
-      "Could not create request for \"" <> url <> "\": " <> string.inspect(
-        error,
-      )
+      "Could not create request for \""
+      <> url
+      <> "\": "
+      <> string.inspect(error)
     }),
   )
 

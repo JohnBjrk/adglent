@@ -1,5 +1,5 @@
-import tom
 import gleam/result
+import tom
 
 pub type TomError {
   TomParseError(error: tom.ParseError)

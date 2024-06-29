@@ -1,13 +1,13 @@
+import gleam/bool
+import gleam/list
+import gleam/result
+import gleam/string
+import priv/errors
 import priv/prompt
 import priv/template
 import priv/templates/test_main
-import priv/errors
 import priv/toml
 import simplifile
-import gleam/string
-import gleam/list
-import gleam/result
-import gleam/bool
 
 const aoc_toml_template = "
 version = {{ version }}
@@ -28,28 +28,29 @@ pub fn main() {
       prompt.confirm("aoc.toml exits - overwrite", False)
     _ -> panic as "Could not create aoc.toml"
   }
-  case overwrite {
-    True -> {
-      template.render(aoc_toml_template, [
-        #("version", "2"),
-        #("year", year),
-        #("session", session),
-        #(
-          "showtime",
-          bool.to_string(use_showtime)
-            |> string.lowercase,
-        ),
-      ])
-      |> simplifile.write(to: aoc_toml_file)
-      |> errors.map_messages(
-        "aoc.toml - written",
-        "Error when writing aoc.toml",
-      )
-    }
+  let _ =
+    case overwrite {
+      True -> {
+        template.render(aoc_toml_template, [
+          #("version", "2"),
+          #("year", year),
+          #("session", session),
+          #(
+            "showtime",
+            bool.to_string(use_showtime)
+              |> string.lowercase,
+          ),
+        ])
+        |> simplifile.write(to: aoc_toml_file)
+        |> errors.map_messages(
+          "aoc.toml - written",
+          "Error when writing aoc.toml",
+        )
+      }
 
-    False -> Ok("aoc.toml - skipped")
-  }
-  |> errors.print_result
+      False -> Ok("aoc.toml - skipped")
+    }
+    |> errors.print_result
 
   let gleam_toml =
     simplifile.read("gleam.toml")

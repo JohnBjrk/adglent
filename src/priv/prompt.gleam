@@ -2,7 +2,8 @@ import gleam/result
 import gleam/string
 
 pub fn confirm(message: String, auto_accept: Bool) -> Bool {
-  auto_accept || case
+  auto_accept
+  || case
     get_line(message <> "? (Y/N): ")
     |> result.unwrap("n")
     |> string.trim()

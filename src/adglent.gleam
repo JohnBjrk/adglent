@@ -1,6 +1,6 @@
-import simplifile.{type FileError}
 import gleam/list
 import gleam/string
+import simplifile.{type FileError}
 
 pub type Example(a) {
   Example(input: String, answer: a)
