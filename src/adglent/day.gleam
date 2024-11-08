@@ -110,7 +110,7 @@ fn create_file_if_not_present(
   content: String,
   path: String,
 ) -> Result(String, String) {
-  case simplifile.verify_is_file(path) {
+  case simplifile.is_file(path) {
     Ok(True) -> {
       Ok(path <> " already exists - skipped")
     }

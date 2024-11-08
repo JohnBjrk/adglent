@@ -108,7 +108,7 @@ pub fn main() {
   |> errors.print_result
   |> errors.assert_ok
 
-  case simplifile.verify_is_file(".gitignore") {
+  case simplifile.is_file(".gitignore") {
     Ok(True) -> {
       use gitignore <- result.try(
         simplifile.read(".gitignore")
